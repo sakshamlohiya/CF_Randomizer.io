@@ -1,0 +1,21 @@
+{
+    "manifest_version":2,
+    "name":"Codeforces Randomizer",
+    "version":"1.0",
+    "description":"A codeforces extension to give a random question!!",
+    "icons":{
+        "128":"icons/icon128.png",
+        "48":"icons/icon48.png",
+        "16":"icons/icon16.png"
+    },
+    "browser_action":{
+        "default_icon":"icons/icon16.png",
+        "default_popup":"popup.html"
+    },
+    "permissions":
+        [
+            "tabs",
+            "contextMenus",
+            "notifications"
+        ]
+}

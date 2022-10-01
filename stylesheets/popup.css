@@ -1,0 +1,24 @@
+.selected {
+    background-color: green;
+    color:aliceblue;
+    border-style:solid;
+    border-color: green;
+}
+
+.getLink {
+    margin-top: 5px;
+    background-color: rgb(107, 103, 103);
+    color: aliceblue;
+}
+
+.tags {
+    display: inline;
+    font-weight: lighter;
+}
+.background {
+    background-color: rgb(236, 241, 241);
+}
+
+.togglefilter {
+    display: none;
+}

@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Codeforces Randomizer</title>
+    <link rel="stylesheet" href="stylesheets/popup.css">
+    <script src="javascripts/axios.min.js"></script>
+</head>
+<body class="background">
+    <div style="min-width:300px">
+    <h2>Codeforces Randomizer</h2>
+    <button id = "filterbtn" class="getLink">Filters</button>
+    <div class="togglefilter" id="filters">
+    <h4>Select Question Type</h4>
+    <input type="radio" name="index" id="A">
+    <label for="A">A</label>
+    <input type="radio" name="index" id="B">
+    <label for="B">B</label>
+    <input type="radio" name="index" id="C">
+    <label for="C">C</label>
+    <input type="radio" name="index" id="D">
+    <label for="D">D</label>
+    <input type="radio" name="index" id="E">
+    <label for="E">E</label>
+    <input type="radio" name="index" id="F">
+    <label for="F">F</label>
+    
+    <h4>Select Time</h4>
+    <input type="radio" name="time" id="Old">
+    <label for="Old">Old</label>
+    <input type="radio" name="time" id="Medium">
+    <label for="Medium">Medium</label>
+    <input type="radio" name="time" id="Latest">
+    <label for="Latest">Latest</label>
+    
+    <h4>Select Rating Range</h4>
+    <input type="number" name="" id="minRating" style="max-width: 100px;" placeholder="0" min="0" max = "3500" step="100"> -
+    <input type="number" name="" id="maxRating" style="max-width: 100px;" placeholder="3500" max="3500" min = "0" step="100">
+    <br>
+    <h4>Select a Tag</h4>
+    <select id="selectTag">
+  <option value="none" title="none">
+    -- Select a Tag --
+  </option>
+  <option value="2-sat" title="2-satisfiability">
+    2-sat
+  </option>
+  <option value="binary search" title="Binary search">
+    binary search
+  </option>
+  <option value="bitmasks" title="Bitmasks">
+    bitmasks
+  </option>
+  <option value="brute force" title="Brute force">
+    brute force
+  </option>
+  <option value="chinese remainder theorem" title="Сhinese remainder theorem">
+    chinese remainder theorem
+  </option>
+  <option value="combinatorics" title="Combinatorics">
+    combinatorics
+  </option>
+  <option value="constructive algorithms" title="Constructive algorithms">
+    constructive algorithms
+  </option>
+  <option
+    value="data structures"
+    title="Heaps, binary search trees, segment trees, hash tables, etc"
+  >
+    data structures
+  </option>
+  <option value="dfs and similar" title="Dfs and similar">
+    dfs and similar
+  </option>
+  <option value="divide and conquer" title="Divide and Conquer">
+    divide and conquer
+  </option>
+  <option value="dp" title="Dynamic programming">
+    dp
+  </option>
+  <option value="dsu" title="Disjoint set union">
+    dsu
+  </option>
+  <option value="expression parsing" title="Parsing expression grammar">
+    expression parsing
+  </option>
+  <option value="fft" title="Fast Fourier transform">
+    fft
+  </option>
+  <option value="flows" title="Graph network flows">
+    flows
+  </option>
+  <option value="games" title="Games, Sprague–Grundy theorem">
+    games
+  </option>
+  <option value="geometry" title="Geometry, computational geometry">
+    geometry
+  </option>
+  <option
+    value="graph matchings"
+    title="Graph matchings, König's theorem, vertex cover of bipartite graph"
+  >
+    graph matchings
+  </option>
+  <option value="graphs" title="Graphs">
+    graphs
+  </option>
+  <option value="greedy" title="Greedy algorithms">
+    greedy
+  </option>
+  <option value="hashing" title="Hashing, hashtables">
+    hashing
+  </option>
+  <option
+    value="implementation"
+    title="Implementation problems, programming technics, simulation"
+  >
+    implementation
+  </option>
+  <option value="interactive" title="Interactive problem">
+    interactive
+  </option>
+  <option
+    value="math"
+    title="Mathematics including integration, differential equations, etc"
+  >
+    math
+  </option>
+  <option
+    value="matrices"
+    title="Matrix multiplication, determinant, Cramer's rule, systems of linear equations"
+  >
+    matrices
+  </option>
+  <option value="meet-in-the-middle" title="Meet-in-the-middle">
+    meet-in-the-middle
+  </option>
+  <option
+    value="number theory"
+    title="Number theory: Euler function, GCD, divisibility, etc"
+  >
+    number theory
+  </option>
+  <option
+    value="probabilities"
+    title="Probabilities, expected values, statistics, random variables, etc"
+  >
+    probabilities
+  </option>
+  <option value="schedules" title="Scheduling Algorithms">
+    schedules
+  </option>
+  <option
+    value="shortest paths"
+    title="Shortest paths on weighted and unweighted graphs"
+  >
+    shortest paths
+  </option>
+  <option value="sortings" title="Sortings, orderings">
+    sortings
+  </option>
+  <option
+    value="string suffix structures"
+    title="Suffix arrays, suffix trees, suffix automatas, etc"
+  >
+    string suffix structures
+  </option>
+  <option
+    value="strings"
+    title="Prefix- and Z-functions, suffix structures, Knuth–Morris–Pratt algorithm, etc"
+  >
+    strings
+  </option>
+  <option value="ternary search" title="Ternary search">
+    ternary search
+  </option>
+  <option value="trees" title="Trees">
+    trees
+  </option>
+  <option value="two pointers" title="Two pointers">
+    two pointers
+  </option>
+</select>
+
+    </div>
+    <button id = "getLink" class="getLink">Get Link</button>
+    <h5 id = "not_found" style="display:none"> No question found !! :(</h5>
+    <div id="Answer"  style="display: none;">
+    <hr>
+    <h4 id="name"></h4>
+    <h5 >Tags : <p id="tags" class="tags"></p></h5>
+    <h5>Rating : <p id="rating" class="tags"></p></h5>
+    <a id="link"></a>
+    </div>
+    </div>
+    <script src = "javascripts/questionBank.js"></script>
+    <script src = "javascripts/popup.js"></script>
+</body>
+</html>
